@@ -47,6 +47,18 @@ namespace Wangkanai.Detection.Test
             // assert
             Assert.Equal(BrowserType.IE, resolver.Browser.Type);
         }
+        
+        [Theory]
+        [InlineData("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36")]
+        public void Resolve_Chrome(string agent)
+        {
+            // arrange
+            var service = CreateService(agent);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
+            Assert.Equal(BrowserType.Chrome, resolver.Browser.Type);
+        }
 
         [Theory]
         [InlineData("Mozilla/5.0 (iPad; CPU OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13F69 Safari/601.1")]
